@@ -4,9 +4,14 @@ import static org.junit.Assert.*;
 
 import org.junit.AfterClass;
 import org.junit.Test;
+import org.junit.Rule;
+import org.junit.rules.ExpectedException;
 
 public class MatrixTest {
 
+	@Rule
+    public ExpectedException thrown= ExpectedException.none();
+	
 	//test cases for ZeroMatrix method
 	@Test
 	public final void testZeroMatrix_EmptyMatrix() 
@@ -364,6 +369,24 @@ public class MatrixTest {
 		//Matrix.printMatrix(testmatrix);
 		
 		org.junit.Assert.assertArrayEquals(comparematrix, testmatrix);
+	}
+	
+	@Test
+	public final void testRotateMatrix_NotASquare() 
+	{
+		
+		
+		int[][] testmatrix = getTestMatrix (3,2);
+	
+		try
+		{
+			Matrix.rotateMatrix(testmatrix);
+		}
+		catch (IllegalArgumentException e)
+		{
+			thrown.expect(IllegalArgumentException.class);	
+		}
+
 	}
 	//generates a matrix for testing, the contents aren't that important other than 0 elements, so it just assigns 1 - total number of elements
 	//that way when you view a matrix, it's obvious if something has been changed

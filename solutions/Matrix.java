@@ -128,9 +128,15 @@ public class Matrix
 			int n = matrix.length;
 			if (n!=0)
 			{
-				int o = matrix[0].length;
-				assert (n==o): "Matrix is not square, can't rotate!";
-				rotateMatrix (matrix,0,n-1);
+				int depth = matrix[0].length;
+				if (n==depth)
+				{
+					rotateMatrix (matrix,0,n-1);
+				}
+				else
+				{
+					throw new IllegalArgumentException("This is not a square matrix, rotation is not defined!");
+				}
 			}
 		}
 	}
