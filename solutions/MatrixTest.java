@@ -7,10 +7,7 @@ import org.junit.Test;
 
 public class MatrixTest {
 
-	@AfterClass
-	public static void tearDownAfterClass() throws Exception {
-	}
-
+	//test cases for ZeroMatrix method
 	@Test
 	public final void testZeroMatrix_EmptyMatrix() 
 	{
@@ -140,6 +137,41 @@ public class MatrixTest {
 		org.junit.Assert.assertArrayEquals(comparematrix, testmatrix);
 	}
 	
+	//test cases for RotateMatrix method
+	@Test
+	public final void testRotateMatrix_NullMatrix() 
+	{
+		//create a test matrix 
+		int[][] testmatrix = null;
+		
+		//create a matrix to compare
+		int[][] comparematrix=null;
+		
+		//Matrix.printMatrix(testmatrix);
+		//Matrix.printMatrix(comparematrix);
+		Matrix.rotateMatrix(testmatrix);
+		//Matrix.printMatrix(testmatrix);
+		
+		org.junit.Assert.assertArrayEquals(comparematrix, testmatrix);
+	}
+	
+	@Test
+	public final void testRotateMatrix_OneElement() 
+	{
+		//create a test matrix 
+		int[][] testmatrix = getTestMatrix(1,1);
+		
+		//create a matrix to compare
+		int[][] comparematrix=getTestMatrix(1,1);
+		
+		//Matrix.printMatrix(testmatrix);
+		//Matrix.printMatrix(comparematrix);
+		Matrix.rotateMatrix(testmatrix);
+		//Matrix.printMatrix(testmatrix);
+		
+		org.junit.Assert.assertArrayEquals(comparematrix, testmatrix);
+	}
+	
 	@Test
 	public final void testRotateMatrix_SimpleCase() 
 	{
@@ -158,10 +190,178 @@ public class MatrixTest {
 		comparematrix[1][2] = 4;
 		comparematrix[2][2] = 7;
 		
-		Matrix.printMatrix(testmatrix);
+		//Matrix.printMatrix(testmatrix);
 		//Matrix.printMatrix(comparematrix);
 		Matrix.rotateMatrix(testmatrix);
-		Matrix.printMatrix(testmatrix);
+		//Matrix.printMatrix(testmatrix);
+		
+		org.junit.Assert.assertArrayEquals(comparematrix, testmatrix);
+	}
+	
+	@Test
+	public final void testRotateMatrix_2Square() 
+	{
+		//create a test matrix 
+		int[][] testmatrix = getTestMatrix (2,2);
+		
+		//create a matrix to compare
+		int[][] comparematrix = new int[2][2];
+		comparematrix[0][0] = 2;
+		comparematrix[1][0] = 4;
+		comparematrix[0][1] = 1;
+		comparematrix[1][1] = 3;
+		
+		//Matrix.printMatrix(testmatrix);
+		//Matrix.printMatrix(comparematrix);
+		Matrix.rotateMatrix(testmatrix);
+		//Matrix.printMatrix(testmatrix);
+		
+		org.junit.Assert.assertArrayEquals(comparematrix, testmatrix);
+	}
+	
+	@Test
+	public final void testRotateMatrix_4Square() 
+	{
+		//create a test matrix 
+		int[][] testmatrix = getTestMatrix (4,4);
+		
+		//create a matrix to compare
+		int[][] comparematrix = new int[4][4];
+		//first row
+		comparematrix[0][0] = 4;
+		comparematrix[1][0] = 8;
+		comparematrix[2][0] = 12;
+		comparematrix[3][0] = 16;
+		//2nd row
+		comparematrix[0][1] = 3;
+		comparematrix[1][1] = 7;
+		comparematrix[2][1] = 11;
+		comparematrix[3][1] = 15;
+		//3rd row
+		comparematrix[0][2] = 2;
+		comparematrix[1][2] = 6;
+		comparematrix[2][2] = 10;
+		comparematrix[3][2] = 14;
+		//4th row
+		comparematrix[0][3] = 1;
+		comparematrix[1][3] = 5;
+		comparematrix[2][3] = 9;
+		comparematrix[3][3] = 13;
+		
+
+		//Matrix.printMatrix(testmatrix);
+		//Matrix.printMatrix(comparematrix);
+		Matrix.rotateMatrix(testmatrix);
+		//Matrix.printMatrix(testmatrix);
+		
+		org.junit.Assert.assertArrayEquals(comparematrix, testmatrix);
+	}
+	
+	@Test
+	public final void testRotateMatrix_5Square() 
+	{
+		//larger odd sized square (5X5->3X3->1X1)
+		
+		int[][] testmatrix = getTestMatrix (5,5);
+		
+		//create a matrix to compare
+		int[][] comparematrix = new int[5][5];
+		//first row
+		comparematrix[0][0] = 5;
+		comparematrix[1][0] = 10;
+		comparematrix[2][0] = 15;
+		comparematrix[3][0] = 20;
+		comparematrix[4][0] = 25;
+		//2nd row
+		comparematrix[0][1] = 4;
+		comparematrix[1][1] = 9;
+		comparematrix[2][1] = 14;
+		comparematrix[3][1] = 19;
+		comparematrix[4][1] = 24;
+		//3rd row
+		comparematrix[0][2] = 3;
+		comparematrix[1][2] = 8;
+		comparematrix[2][2] = 13;
+		comparematrix[3][2] = 18;
+		comparematrix[4][2] = 23;
+		//4th row
+		comparematrix[0][3] = 2;
+		comparematrix[1][3] = 7;
+		comparematrix[2][3] = 12;
+		comparematrix[3][3] = 17;
+		comparematrix[4][3] = 22;
+		//5th row
+		comparematrix[0][4] = 1;
+		comparematrix[1][4] = 6;
+		comparematrix[2][4] = 11;
+		comparematrix[3][4] = 16;
+		comparematrix[4][4] = 21;
+		
+
+		//Matrix.printMatrix(testmatrix);
+		//Matrix.printMatrix(comparematrix);
+		Matrix.rotateMatrix(testmatrix);
+		//Matrix.printMatrix(testmatrix);
+		
+		org.junit.Assert.assertArrayEquals(comparematrix, testmatrix);
+	}
+	
+	@Test
+	public final void testRotateMatrix_6Square() 
+	{
+		//larger even sized square (6X6->4X4->2X2)
+		
+		int[][] testmatrix = getTestMatrix (6,6);
+		
+		//create a matrix to compare
+		int[][] comparematrix = new int[6][6];
+		//first row
+		comparematrix[0][0] = 6;
+		comparematrix[1][0] = 12;
+		comparematrix[2][0] = 18;
+		comparematrix[3][0] = 24;
+		comparematrix[4][0] = 30;
+		comparematrix[5][0] = 36;
+		//2nd row
+		comparematrix[0][1] = 5;
+		comparematrix[1][1] = 11;
+		comparematrix[2][1] = 17;
+		comparematrix[3][1] = 23;
+		comparematrix[4][1] = 29;
+		comparematrix[5][1] = 35;
+		//3rd row
+		comparematrix[0][2] = 4;
+		comparematrix[1][2] = 10;
+		comparematrix[2][2] = 16;
+		comparematrix[3][2] = 22;
+		comparematrix[4][2] = 28;
+		comparematrix[5][2] = 34;
+		//4th row
+		comparematrix[0][3] = 3;
+		comparematrix[1][3] = 9;
+		comparematrix[2][3] = 15;
+		comparematrix[3][3] = 21;
+		comparematrix[4][3] = 27;
+		comparematrix[5][3] = 33;
+		//4th row
+		comparematrix[0][4] = 2;
+		comparematrix[1][4] = 8;
+		comparematrix[2][4] = 14;
+		comparematrix[3][4] = 20;
+		comparematrix[4][4] = 26;
+		comparematrix[5][4] = 32;
+		//5th row
+		comparematrix[0][5] = 1;
+		comparematrix[1][5] = 7;
+		comparematrix[2][5] = 13;
+		comparematrix[3][5] = 19;
+		comparematrix[4][5] = 25;
+		comparematrix[5][5] = 31;
+		
+		//Matrix.printMatrix(testmatrix);
+		//Matrix.printMatrix(comparematrix);
+		Matrix.rotateMatrix(testmatrix);
+		//Matrix.printMatrix(testmatrix);
 		
 		org.junit.Assert.assertArrayEquals(comparematrix, testmatrix);
 	}

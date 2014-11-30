@@ -85,12 +85,17 @@ public class Matrix
 	//prints array with first index across the top of the square, the 2nd down the side
 	public static void printMatrix (int[][] matrix)
 	{	
-		int m = matrix.length;
-		int n;
+		int m=0;
+		int n=0;
+		
+		if (matrix!=null)
+		{
+			m=matrix.length;
+		}
 		
 		if (m==0)
 		{
-			n =0;
+			n=0;
 		}
 		else
 		{
@@ -118,12 +123,15 @@ public class Matrix
 	//note the logic works the same to rotate clock-wise
 	public static void rotateMatrix (int[][] matrix)
 	{
-		int n = matrix.length;
-		if (n!=0)
+		if (matrix!=null)
 		{
-			int o = matrix[0].length;
-			assert (n==o): "Matrix is not square, can't rotate!";
-			rotateMatrix (matrix,0,n-1);
+			int n = matrix.length;
+			if (n!=0)
+			{
+				int o = matrix[0].length;
+				assert (n==o): "Matrix is not square, can't rotate!";
+				rotateMatrix (matrix,0,n-1);
+			}
 		}
 	}
 	private static void rotateMatrix (int[][] matrix, int leftIdx, int rightIdx)
@@ -134,17 +142,24 @@ public class Matrix
 		{
 			//rotate the outer edge elements, do in place
 			// walk the top row and for each element, do a 4 way swap around the square
-			for (int i = leftIdx; i < rightIdx; i++)
+			for (int i = 0; i < (rightIdx-leftIdx); i++)
 			{
-				tmp = matrix[i][leftIdx];
-				matrix[i][leftIdx] = matrix[rightIdx-i][i];
-				matrix[rightIdx-i][i] = matrix[rightIdx-i][rightIdx-i];
-				matrix[rightIdx-i][rightIdx-i] = matrix[leftIdx][rightIdx-i];
+				//tmp = matrix[i][leftIdx];
+				//matrix[i][leftIdx] = matrix[rightIdx][leftIdx+i];
+				//matrix[rightIdx][leftIdx+i] = matrix[rightIdx-i][rightIdx];
+				//matrix[rightIdx-i][rightIdx] = matrix[leftIdx][rightIdx-i];
+				//matrix[leftIdx][rightIdx-i] = tmp;
+				
+				tmp = matrix[leftIdx+i][leftIdx];
+				matrix[leftIdx+i][leftIdx] = matrix[rightIdx][leftIdx+i];
+				matrix[rightIdx][leftIdx+i] = matrix[rightIdx-i][rightIdx];
+				matrix[rightIdx-i][rightIdx] = matrix[leftIdx][rightIdx-i];
 				matrix[leftIdx][rightIdx-i] = tmp;
+	
 			}
 			
 			//call recursively on the "inner square"
-			//rotateMatrix (matrix, leftIdx+1, rightIdx-1);
+			rotateMatrix (matrix, leftIdx+1, rightIdx-1);
 		}
 	}
 
