@@ -377,16 +377,14 @@ public class MatrixTest {
 		
 		
 		int[][] testmatrix = getTestMatrix (3,2);
-	
 		try
 		{
 			Matrix.rotateMatrix(testmatrix);
 		}
 		catch (IllegalArgumentException e)
 		{
-			thrown.expect(IllegalArgumentException.class);	
+			assertNotNull(e);
 		}
-
 	}
 	//generates a matrix for testing, the contents aren't that important other than 0 elements, so it just assigns 1 - total number of elements
 	//that way when you view a matrix, it's obvious if something has been changed

@@ -149,13 +149,7 @@ public class Matrix
 			//rotate the outer edge elements, do in place
 			// walk the top row and for each element, do a 4 way swap around the square
 			for (int i = 0; i < (rightIdx-leftIdx); i++)
-			{
-				//tmp = matrix[i][leftIdx];
-				//matrix[i][leftIdx] = matrix[rightIdx][leftIdx+i];
-				//matrix[rightIdx][leftIdx+i] = matrix[rightIdx-i][rightIdx];
-				//matrix[rightIdx-i][rightIdx] = matrix[leftIdx][rightIdx-i];
-				//matrix[leftIdx][rightIdx-i] = tmp;
-				
+			{	
 				tmp = matrix[leftIdx+i][leftIdx];
 				matrix[leftIdx+i][leftIdx] = matrix[rightIdx][leftIdx+i];
 				matrix[rightIdx][leftIdx+i] = matrix[rightIdx-i][rightIdx];
