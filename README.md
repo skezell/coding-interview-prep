@@ -17,4 +17,5 @@ Problems included:
   - create an array list
   - sort array list via quicksort (with and without optimization)
   - find element in the list (unsorted linear search, sorted binary search)
+
 3) Towers of Hanoi (Towers.java) - implements that classic Towers of Hanoi problem, but generalizes for any number of discs (n) and towers (t); It returns the minimum number of moves required to solve given the parameters and stores the moves used to get to the solution (or -1 if no solution exists). Does not currently support changing the problem parmeters, for simplicity.
